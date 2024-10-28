@@ -3,6 +3,7 @@ console.log("Hello Worldo!");
 const gridContainerDiv = document.getElementById("gridContainer");
 let gridSquares;
 let gridSize = 16;
+let borderON = true;
 
 function setupGrids(numGrids) {
     gridContainerDiv.innerHTML = ""; // clears
@@ -17,7 +18,9 @@ function setupGrids(numGrids) {
         for(var j = 0; j < numGrids; j++) {
             const gridSquare = document.createElement("div");
             gridSquare.classList.add("grid-square");
-            gridSquare.style.border = "2px solid black";
+            if(borderON) {
+                gridSquare.style.border = "2px solid black";
+            }
             gridSquare.style.width = `${squareSize}px`;
             gridSquare.style.height = `${squareSize}px`;
             gridRow.appendChild(gridSquare);
@@ -81,7 +84,6 @@ const resizeSlider = document.getElementById("grid-size-slider");
 
 let isMousePressed = false;
 let currentColor = colorPicker.value;
-let borderON = true;
 
 function addSquareListeners() {
     gridSquares.forEach((currentSquare) => {
